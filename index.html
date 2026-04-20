@@ -1,31 +1,47 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
+    <title>Avengers: Doomsday Catalog</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Witness the largest assembly in history. Robert Downey Jr. returns as Doctor Doom to rewrite reality. Recruit your strike team and survive the Multiverse collapse. In theaters December 2026"
+    />
+    <meta
+      name="keywords"
+      content="Avengers Doomsday, Doctor Doom, Robert Downey Jr, Fantastic Four, X-Men, MCU 2026, Multiverse, Marvel Strike Team"
+    />
+    <meta name="viewport" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
+    <script type="text/javascript" defer src="scripts.js"></script>
   </head>
 
   <body>
+    <!-- ==========================================================================
+                                        Navbar
+    =============================================================================-->
     <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
+      <nav id="main-nav" aria-label="Main Navigation">
+        <img
+          src="assets/nav-logo.png"
+          alt="Marvel Logo"
+          class="main-nav__logo"
+        />
+        <!-- Nav Links-->
+        <ul class="main-nav__links">
+          <li class="main-nav__link"><a href="#hero">Home</a></li>
+          <li class="main-nav__link"><a href="#about">About</a></li>
+          <li class="main-nav__link"><a href="#catalog">Heroes</a></li>
         </ul>
-      </div>
-    </div>
-    <div class="footer">
-      <button onclick="quoteAlert()">Get A Quote!</button>
-      <button onclick="removeLastCard()">Remove A Card!</button>
-    </div>
+
+        <!-- Burger Menu -->
+        <button class="main-nav__burger">
+          <div class="main-nav__burger__line1"></div>
+          <div class="main-nav__burger__line2"></div>
+          <div class="main-nav__burger__line3"></div>
+        </button>
+      </nav>
+    </header>
   </body>
 </html>
