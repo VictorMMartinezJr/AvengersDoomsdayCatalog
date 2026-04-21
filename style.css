@@ -83,6 +83,17 @@ body {
   line-height: 1.5;
 }
 
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* media queries */
 @media screen and (min-width: 500px) {
   .section__description {
@@ -124,6 +135,8 @@ body {
   position: relative;
   padding: 0.5rem;
   z-index: 3;
+  background: transparent;
+  animation: fadeInDown 1s ease both;
 }
 
 .main-nav__logo {
@@ -283,16 +296,19 @@ body {
 
 .hero__title {
   font-size: 3rem;
+  animation: fadeInDown 1s ease both;
 }
 
 .hero__subtitle {
   font-size: 2rem;
+  animation: fadeInDown 1s ease both;
 }
 
 .hero__btn {
   letter-spacing: 2px;
   padding: 1rem 2rem;
   text-decoration: none;
+  animation: fadeInDown 1s ease both;
 }
 
 /* media queries */
