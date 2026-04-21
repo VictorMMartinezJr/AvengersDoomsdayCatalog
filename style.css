@@ -458,7 +458,7 @@ body {
   clip-path: inset(-100% 0% 0% 0%);
   animation:
     herocard-glow 3s infinite ease-in-out,
-    fadeIn 0.5s ease-in-out forwards;
+    fadeIn 0.2s ease-in-out forwards;
 }
 
 /* glow effect for hero card shadow */
