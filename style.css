@@ -25,7 +25,7 @@ html {
 body {
   overflow-x: hidden;
   height: 100vh;
-  background-color: var(--bg-dark);
+  background: linear-gradient(to bottom, #000 40%, #002b0a);
 }
 
 /* ========================================
@@ -96,6 +96,7 @@ body {
   width: 100%;
 }
 
+/* mobile burger menu */
 .main-nav__burger {
   cursor: pointer;
   background: none;
@@ -114,6 +115,7 @@ body {
   transition: all 0.4s ease;
 }
 
+/* animate burger */
 .toggle .main-nav__burger__line1 {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -259,9 +261,8 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem 0.5rem;
-  gap: 1rem;
-  background: linear-gradient(to bottom, #000 70%, #002b0a);
+  padding: 2rem 0.5rem 0.5rem 0;
+  gap: 2rem;
 }
 
 /* smooth transition from wallpaper in hero to "about" black bg */
@@ -276,26 +277,34 @@ body {
   pointer-events: none;
 }
 
-.about__title,
-.about__subtitle {
-  color: var(--primary-green);
+.about__title {
+  position: relative;
+  font-size: 2rem;
 }
 
-.about__title {
-  font-size: 2rem;
+.about__title::after {
+  content: "";
+  position: absolute;
+  background-color: var(--primary-green);
+  width: 80%;
+  height: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
 }
 
 .about__subtitle {
   font-size: 1.5rem;
+  color: var(--primary-green);
 }
 
-.about__descriptions {
+.about__description {
   line-height: 1.5;
 }
 
 /* media queries */
 @media screen and (min-width: 500px) {
-  .about__descriptions {
+  .about__description {
     font-size: 1.25rem;
   }
 }
@@ -306,7 +315,7 @@ body {
 }
 
 @media screen and (min-width: 1024px) {
-  .about__descriptions {
+  .about__description {
     width: 60%;
   }
 }
@@ -320,7 +329,241 @@ body {
     font-size: 2rem;
   }
 
-  .about__descriptions {
+  .about__description {
     font-size: 1.5rem;
+  }
+}
+
+/* ========================================
+              Hero Catalog 
+======================================== */
+#catalog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0.5rem 0.5rem 0;
+  gap: 2rem;
+}
+
+.catalog__title {
+  font-size: 2rem;
+  position: relative;
+}
+
+.catalog__title::after {
+  content: "";
+  position: absolute;
+  background-color: var(--primary-green);
+  width: 80%;
+  height: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+}
+/******************** Filter Section ********************/
+.catalog__filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+/* dropdown */
+.catalog__select {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  border: 2px solid var(--primary-green);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 10px var(--primary-green);
+  z-index: 1;
+}
+
+.catalog__select:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 4px;
+  box-shadow: 0 0 20px var(--primary-green);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+}
+
+.catalog__ss__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.catalog__ss__checkboxlabel {
+  color: var(--text-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* checkbox */
+.catalog__ss__checkbox__input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--primary-green);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.catalog__ss__checkbox__input:checked {
+  background: var(--primary-green);
+  box-shadow: 0 0 10px var(--primary-green);
+}
+
+/* checkmark */
+.catalog__ss__checkbox__input:checked::after {
+  content: "✔";
+  color: var(--text-white);
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.catalog__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/******************** Hero Card ********************/
+.catalog__herocard {
+  width: 100%;
+  max-width: 200px;
+  height: 300px;
+  background-color: var(--text-white);
+  box-shadow: 0 0 50px var(--primary-green);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  clip-path: inset(-100% 0% 0% 0%);
+  animation: herocard-glow 3s infinite ease-in-out;
+}
+
+/* glow effect for hero card shadow */
+@keyframes herocard-glow {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+  }
+}
+
+.catalog__herocard:hover img {
+  transform: scale(1.3) translateY(-30px);
+}
+
+/* hover state */
+.catalog__herocard:hover button {
+  background: var(--primary-green);
+  box-shadow: 0 0 50px var(--primary-green);
+  transform: translateY(-3px);
+}
+
+.catalog__herocard__img {
+  width: 100%;
+  object-fit: contain;
+  transition: all 0.2s ease;
+}
+
+.catalog__herocard__info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: multiply;
+  width: 100%;
+  padding: 1rem 0.5rem;
+}
+
+.catalog__herocard__info__button {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  border: 2px solid var(--primary-green);
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--primary-green);
+}
+
+.catalog__herocard__info__button:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 4px;
+  box-shadow: 0 0 20px var(--primary-green);
+}
+
+/* media queries */
+@media screen and (min-width: 500px) {
+  .catalog__description {
+    font-size: 1.25rem;
+  }
+
+  .catalog__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .catalog__title {
+    font-size: 2.5rem;
+  }
+
+  .catalog__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .catalog__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .catalog__title {
+    font-size: 3rem;
+  }
+
+  .catalog__description {
+    font-size: 1.5rem;
+  }
+
+  .catalog__grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .catalog__grid {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
