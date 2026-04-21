@@ -148,3 +148,15 @@ catalogGrid.addEventListener("click", (e) => {
     ? (heroCardBtn.innerText = "- Strike Squad")
     : (heroCardBtn.innerText = "+ Strike Squad");
 });
+
+// Filter by strike squad members only
+catalogStrikeSquadCB.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    renderCatalog(strikeSquad);
+  } else {
+    renderCatalog(heroes);
+  }
+
+  // reset team filter to all when going back to full catalog
+  catalogSelect.value = "all";
+});
