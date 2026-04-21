@@ -12,6 +12,9 @@ const menuList = document.querySelector(".main-nav__links");
 // Catalog elements
 const catalogGrid = document.querySelector(".catalog__grid");
 const catalogSelect = document.querySelector(".catalog__select");
+const catalogStrikeSquadCB = document.querySelector(
+  ".catalog__ss__checkbox__input",
+);
 
 /**
  * --------------------------------------------------------------------------
@@ -46,9 +49,23 @@ const createHeroCardHTML = (hero) => {
     `;
 };
 
+const emptySSHTML = () => {
+  return `
+      <div class="catalog__empty">
+        <p class="catalog__empty__message">No heroes added to Strike Squad yet, add now?</p>
+        <button class="catalog__empty__button">ADD</button>
+      </div>
+    `;
+};
+
 // Render/Update catalog with updated data
 const renderCatalog = (heroes) => {
   catalogGrid.innerHTML = "";
+
+  if (heroes.length === 0) {
+    catalogGrid.innerHTML += emptySSHTML();
+    return;
+  }
 
   heroes.forEach((hero) => {
     catalogGrid.innerHTML += createHeroCardHTML(hero);
@@ -81,9 +98,18 @@ menuBtn.addEventListener("click", () => {
 // Catalog filter by team
 catalogSelect.addEventListener("change", (e) => {
   const selectedTeam = e.target.value;
+  const strikeSquadOnly = catalogStrikeSquadCB.checked;
 
   if (selectedTeam === "all") {
-    renderCatalog(heroes);
+    strikeSquadOnly ? renderCatalog(strikeSquad) : renderCatalog(heroes);
+    return;
+  }
+
+  if (strikeSquadOnly) {
+    const filteredHeroes = strikeSquad.filter(
+      (hero) => hero.team === selectedTeam,
+    );
+    renderCatalog(filteredHeroes);
   } else {
     const filteredHeroes = heroes.filter((hero) => hero.team === selectedTeam);
     renderCatalog(filteredHeroes);
@@ -108,6 +134,13 @@ catalogGrid.addEventListener("click", (e) => {
     strikeSquad.push(heroObject);
   } else {
     strikeSquad.splice(heroIndex, 1);
+
+    /* Remove the hero from the DOM immediately if user 
+      removes from ss while viewing ss only
+    */
+    if (catalogStrikeSquadCB.checked) {
+      heroCard.remove();
+    }
   }
 
   // update button text based on whether hero is in strike squad or not
