@@ -38,7 +38,7 @@ export const heroes = [
     id: 5,
     name: "Reed Richards",
     role: "The Genius",
-    team: "Fantastic Four",
+    team: "F4",
     image: "assets/teams/f4/reed.png",
   },
   {
