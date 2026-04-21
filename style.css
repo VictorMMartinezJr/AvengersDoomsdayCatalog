@@ -24,7 +24,7 @@ html {
 
 body {
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: 100%;
   background: linear-gradient(to bottom, #000 40%, #002b0a) fixed;
 }
 
@@ -123,6 +123,7 @@ body {
   align-items: center;
   position: relative;
   padding: 0.5rem;
+  z-index: 3;
 }
 
 .main-nav__logo {
@@ -253,6 +254,7 @@ body {
               Hero Section
 ======================================== */
 #hero {
+  position: relative;
   padding: 0 0 0 0;
   height: 92vh;
   background-image: url("assets/hero-mobile.jpg");
@@ -265,6 +267,18 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+}
+
+/* smooth bg color transition from wallpaper in hero to about section */
+#hero::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, transparent, #000);
+  pointer-events: none;
 }
 
 .hero__title {
@@ -316,7 +330,6 @@ body {
 /* ========================================
             About Section
 ======================================== */
-
 #about {
   position: relative;
   display: flex;
@@ -327,15 +340,15 @@ body {
   gap: 2rem;
 }
 
-/* smooth transition from wallpaper in hero to "about" black bg */
+/* smooth bg color transition from wallpaper in hero to about section */
 #about::before {
   content: "";
   position: absolute;
-  top: -100px;
+  top: -80px;
   left: 0;
   width: 100%;
   height: 100px;
-  background: linear-gradient(to bottom, transparent, #000000);
+  background: linear-gradient(to bottom, transparent, #000);
   pointer-events: none;
 }
 
