@@ -24,8 +24,8 @@ html {
 
 body {
   overflow-x: hidden;
-  height: auto;
-  background: linear-gradient(to bottom, #000 40%, #002b0a);
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #000 40%, #002b0a) fixed;
 }
 
 /* ========================================
@@ -345,6 +345,7 @@ body {
   align-items: center;
   padding: 2rem 0.5rem 0.5rem 0;
   gap: 2rem;
+  min-height: 50vh;
 }
 
 /******************** Filter Section ********************/
@@ -430,6 +431,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  margin-top: 5rem;
 }
 
 /******************** Hero Card ********************/
