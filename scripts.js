@@ -1,6 +1,11 @@
 import { heroes, strikeSquad } from "./data.js";
 
-// intersection observer for hero cards
+/**
+ * --------------------------------------------------------------------------
+ *                            Intersection Observers
+ * --------------------------------------------------------------------------
+ */
+// observer for hero cards
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(
     (entry) => {
@@ -15,6 +20,18 @@ const observer = new IntersectionObserver((entries) => {
     },
   );
 });
+
+// observer for about section
+const aboutObserver = new IntersectionObserver(
+  (entries) => {
+    if (entries[0].isIntersecting) {
+      entries[0].target.classList.add("inView");
+      aboutObserver.unobserve(entries[0].target);
+    }
+  },
+  { threshold: 0.3 },
+);
+aboutObserver.observe(document.querySelector("#about"));
 
 /**
  * --------------------------------------------------------------------------

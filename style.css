@@ -354,6 +354,13 @@ body {
   text-align: center;
   padding: 2rem 0.5rem 0.5rem 0;
   gap: 2rem;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 1s ease;
+}
+#about.inView {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* smooth bg color transition from wallpaper in hero to about section */
