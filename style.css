@@ -351,6 +351,7 @@ body {
 /******************** Filter Section ********************/
 .catalog__filters {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -430,7 +431,7 @@ body {
 .catalog__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 6rem;
   margin-top: 5rem;
 }
 
@@ -531,6 +532,14 @@ body {
 }
 
 /* media queries */
+@media screen and (min-width: 370px) {
+  .catalog__grid {
+    gap: 2rem;
+  }
+  .catalog__filters {
+    flex-direction: row;
+  }
+}
 @media screen and (min-width: 500px) {
   .catalog__grid {
     grid-template-columns: repeat(2, 1fr);
