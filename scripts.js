@@ -11,6 +11,7 @@ const menuList = document.querySelector(".main-nav__links");
 
 // Catalog elements
 const catalogGrid = document.querySelector(".catalog__grid");
+const catalogSelect = document.querySelector(".catalog__select");
 
 /**
  * --------------------------------------------------------------------------
@@ -63,7 +64,7 @@ renderCatalog(heroes);
  * --------------------------------------------------------------------------
  */
 
-/* Navbar menu toggle */
+// Navbar menu toggle
 menuBtn.addEventListener("click", () => {
   const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
 
@@ -75,4 +76,16 @@ menuBtn.addEventListener("click", () => {
 
   // animate burger menu btn
   menuBtn.classList.toggle("toggle");
+});
+
+// Catalog filter by team
+catalogSelect.addEventListener("change", (e) => {
+  const selectedTeam = e.target.value;
+
+  if (selectedTeam === "all") {
+    renderCatalog(heroes);
+  } else {
+    const filteredHeroes = heroes.filter((hero) => hero.team === selectedTeam);
+    renderCatalog(filteredHeroes);
+  }
 });
