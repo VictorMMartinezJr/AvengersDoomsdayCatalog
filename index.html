@@ -48,11 +48,15 @@
                                         Hero
     =============================================================================-->
     <section id="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title" class="section__title hero__title" aria-label="Release date: December 18th, 2026">
+      <h1
+        id="hero-title"
+        class="hero__title"
+        aria-label="Release date: December 18th, 2026"
+      >
         Avengers: Doomsday
       </h1>
       <h2 class="hero__subtitle">12.18.26</h2>
-      <button class="hero__btn">Hero Catalog</button>
+      <button class="main__btn hero__btn">Hero Catalog</button>
     </section>
 
     <!-- ==========================================================================
@@ -60,16 +64,18 @@
     =============================================================================-->
     <section id="about" aria-labelledby="about-title">
       <!-- Text 1 -->
-      <h2 id="about-title" class="about__title">A New Threat Rises</h1>
-      <p class="about__description">
+      <h2 id="about-title" class="section__title about__title">
+        A New Threat Rises
+      </h2>
+      <p class="section__description about__description">
         The Multiverse is fracturing, and the stakes have never been higher. As
         the dust settles on previous battles, a shadow looms over reality that
         makes even the Mad Titan's crusade look like a mere prelude.
       </p>
 
       <!-- Text 2 -->
-      <h3 class="about__subtitle">The Return of a Legend</h2>
-      <p class="about__description">
+      <h3 class="section__subtitle about__subtitle">The Return of a Legend</h3>
+      <p class="section__description about__description">
         The Earth's Mightiest Heroes must reunite once more, but the battlefield
         has changed, and the face of their greatest adversary is one they never
         expected. Robert Downey Jr. returns to the Marvel Cinematic Universe in
@@ -78,8 +84,10 @@
       </p>
 
       <!-- Text 3 -->
-      <h3 class="about__subtitle">Witness the Collision of Worlds</h2>
-      <p class="about__description">
+      <h3 class="section__subtitle about__subtitle">
+        Witness the Collision of Worlds
+      </h3>
+      <p class="section__description about__description">
         Directed by the Russo Brothers, Avengers: Doomsday marks the beginning
         of the end. The fight is a desperate race to preserve the fabric of
         existence itself against a foe whose intellect matches his ambition.
@@ -90,12 +98,17 @@
                                       Catalog
     =============================================================================-->
     <section id="catalog" aria-labelledby="catalog-title">
-      <h2 id="catalog-title" class="catalog__title">Hero Catalog</h2>
-      <p class="catalog__description">Explore the heroes of the Marvel Cinematic Universe.</p>
-      
+      <h2 id="catalog-title" class="section__title catalog__title">
+        Hero Catalog
+      </h2>
+      <p class="section__description catalog__description">
+        Explore the heroes of the Marvel Cinematic Universe.
+      </p>
+
       <div class="catalog__filters">
         <!-- Filter Dropdown-->
-        <label for="team-filter" class="sr-only">Filter heroes by team</label> <!-- added for screen readers only -->
+        <label for="team-filter" class="sr-only">Filter heroes by team</label>
+        <!-- added for screen readers only -->
         <select id="team-filter" class="catalog__select">
           <option value="all">ALL CLASSES</option>
           <option value="X-Men">X-MEN</option>
@@ -106,7 +119,11 @@
 
         <!-- Strike Squad Filter -->
         <div class="catalog__ss__checkbox">
-          <input type="checkbox" id="squad-only" class="catalog__ss__checkbox__input">
+          <input
+            type="checkbox"
+            id="squad-only"
+            class="catalog__ss__checkbox__input"
+          />
           <label for="squad-only" class="catalog__ss__checkboxlabel">
             STRIKE SQUAD
           </label>

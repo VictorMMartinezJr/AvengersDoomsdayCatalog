@@ -43,7 +43,7 @@ const createHeroCardHTML = (hero) => {
 
             <div class="catalog__herocard__info">
               <h3 class="catalog__herocard__info__name">${hero.name}</h3>
-              <button class="catalog__herocard__info__button">${buttonText}</button>
+              <button class="main__btn catalog__herocard__info__button">${buttonText}</button>
             </div>
         </div>
     `;
@@ -52,8 +52,8 @@ const createHeroCardHTML = (hero) => {
 const emptySSHTML = () => {
   return `
       <div class="catalog__empty">
-        <p class="catalog__empty__message">No heroes added to Strike Squad yet, add now?</p>
-        <button class="catalog__empty__button">ADD</button>
+        <p class="section__description catalog__empty__message">No heroes added to Strike Squad yet, add now?</p>
+        <button class="main__btn catalog__empty__button">ADD</button>
       </div>
     `;
 };

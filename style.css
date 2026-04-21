@@ -24,8 +24,93 @@ html {
 
 body {
   overflow-x: hidden;
-  height: 100vh;
+  height: auto;
   background: linear-gradient(to bottom, #000 40%, #002b0a);
+}
+
+/* ========================================
+              Utlity Classes
+======================================== */
+
+.main__btn {
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--text-white);
+  transition: all 0.4s ease;
+  background: transparent;
+  border: 2px solid var(--primary-green);
+  box-shadow: 0 0 10px var(--primary-green);
+  outline: none;
+}
+
+.main__btn:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 4px;
+  box-shadow: 0 0 20px var(--primary-green);
+}
+
+/* hover state */
+.main__btn:hover {
+  background: var(--primary-green);
+  box-shadow: 0 0 50px var(--primary-green);
+  transform: translateY(-3px);
+}
+
+.section__title {
+  position: relative;
+  font-size: 2rem;
+}
+
+.section__title::after {
+  content: "";
+  position: absolute;
+  background-color: var(--primary-green);
+  width: 80%;
+  height: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+}
+
+.section__subtitle {
+  font-size: 1.5rem;
+  color: var(--primary-green);
+}
+
+.section__description {
+  line-height: 1.5;
+}
+
+/* media queries */
+@media screen and (min-width: 500px) {
+  .section__description {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .section__title {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .section__description {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .section__title {
+    font-size: 3rem;
+  }
+
+  .section__subtitle {
+    font-size: 2rem;
+  }
+
+  .section__description {
+    font-size: 1.5rem;
+  }
 }
 
 /* ========================================
@@ -133,7 +218,6 @@ body {
     font-size: 1.5rem;
   }
 }
-
 @media screen and (min-width: 640px) {
   #main-nav {
     padding: 0 1rem;
@@ -152,13 +236,11 @@ body {
     display: none;
   }
 }
-
 @media screen and (min-width: 768px) {
   .main-nav__logo {
     height: 3rem;
   }
 }
-
 @media screen and (min-width: 1280px) {
   #main-nav {
     padding: 0 2rem;
@@ -193,29 +275,7 @@ body {
 
 .hero__btn {
   letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
   padding: 1rem 2rem;
-  cursor: pointer;
-  border-radius: 4px;
-  color: var(--text-white);
-  transition: all 0.4s ease;
-  background: transparent;
-  border: 3px solid var(--primary-green);
-  box-shadow: 0 0 10px var(--primary-green);
-}
-
-/* hover state */
-.hero__btn:hover {
-  background: var(--primary-green);
-  box-shadow: 0 0 50px var(--primary-green);
-  transform: translateY(-3px);
-}
-
-/* active state */
-.hero__btn:active {
-  transform: translateY(1px) scale(0.98);
-  box-shadow: 0 0 10px var(--primary-green);
 }
 
 /* media queries */
@@ -236,7 +296,6 @@ body {
     font-size: 1rem;
   }
 }
-
 @media screen and (min-width: 1280px) {
   .hero__title {
     font-size: 7rem;
@@ -277,63 +336,6 @@ body {
   pointer-events: none;
 }
 
-.about__title {
-  position: relative;
-  font-size: 2rem;
-}
-
-.about__title::after {
-  content: "";
-  position: absolute;
-  background-color: var(--primary-green);
-  width: 80%;
-  height: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -10px;
-}
-
-.about__subtitle {
-  font-size: 1.5rem;
-  color: var(--primary-green);
-}
-
-.about__description {
-  line-height: 1.5;
-}
-
-/* media queries */
-@media screen and (min-width: 500px) {
-  .about__description {
-    font-size: 1.25rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .about__title {
-    font-size: 2.5rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .about__description {
-    width: 60%;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .about__title {
-    font-size: 3rem;
-  }
-
-  .about__subtitle {
-    font-size: 2rem;
-  }
-
-  .about__description {
-    font-size: 1.5rem;
-  }
-}
-
 /* ========================================
               Hero Catalog 
 ======================================== */
@@ -345,21 +347,6 @@ body {
   gap: 2rem;
 }
 
-.catalog__title {
-  font-size: 2rem;
-  position: relative;
-}
-
-.catalog__title::after {
-  content: "";
-  position: absolute;
-  background-color: var(--primary-green);
-  width: 80%;
-  height: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -10px;
-}
 /******************** Filter Section ********************/
 .catalog__filters {
   display: flex;
@@ -515,64 +502,56 @@ body {
 
 .catalog__herocard__info__button {
   background-color: var(--bg-dark);
-  color: var(--text-white);
-  border: 2px solid var(--primary-green);
   padding: 0.2rem 0.5rem;
   font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px var(--primary-green);
 }
 
-.catalog__herocard__info__button:focus {
-  outline: 2px solid var(--primary-green);
-  outline-offset: 4px;
-  box-shadow: 0 0 20px var(--primary-green);
+.catalog__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--text-white);
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.catalog__empty__message {
+  letter-spacing: 1px;
+}
+
+.catalog__empty__button {
+  background-color: var(--bg-dark);
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
 }
 
 /* media queries */
 @media screen and (min-width: 500px) {
-  .catalog__description {
-    font-size: 1.25rem;
-  }
-
   .catalog__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media screen and (min-width: 768px) {
-  .catalog__title {
-    font-size: 2.5rem;
-  }
-
   .catalog__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 @media screen and (min-width: 1024px) {
   .catalog__grid {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-@media screen and (min-width: 1280px) {
-  .catalog__title {
-    font-size: 3rem;
-  }
-
   .catalog__description {
-    font-size: 1.5rem;
+    text-align: center;
   }
-
+}
+@media screen and (min-width: 1280px) {
   .catalog__grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
-
 @media screen and (min-width: 1536px) {
   .catalog__grid {
     grid-template-columns: repeat(6, 1fr);
