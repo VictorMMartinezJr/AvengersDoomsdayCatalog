@@ -31,7 +31,7 @@ const createHeroCardHTML = (hero) => {
   let buttonText = isInStrikeSquad ? "- Strike Squad " : "+ Strike Squad";
 
   return `
-        <div class="catalog__herocard">
+        <div class="catalog__herocard" data-id="${hero.id}">
           <img
             class="catalog__herocard__img"
             src=${hero.image}
@@ -88,4 +88,30 @@ catalogSelect.addEventListener("change", (e) => {
     const filteredHeroes = heroes.filter((hero) => hero.team === selectedTeam);
     renderCatalog(filteredHeroes);
   }
+});
+
+// Add/Remove hero from strike squad on card click
+catalogGrid.addEventListener("click", (e) => {
+  const heroCard = e.target.closest(".catalog__herocard");
+  const heroCardBtn = heroCard.querySelector(
+    ".catalog__herocard__info__button",
+  );
+
+  if (!heroCard) return;
+
+  const heroID = parseInt(heroCard.dataset.id);
+  const heroObject = heroes.find((h) => h.id === heroID);
+  const heroIndex = strikeSquad.findIndex((h) => h.id === heroID);
+
+  // push to strike squad array or remove if already exists
+  if (heroIndex === -1) {
+    strikeSquad.push(heroObject);
+  } else {
+    strikeSquad.splice(heroIndex, 1);
+  }
+
+  // update button text based on whether hero is in strike squad or not
+  existsInStrikeSquad(heroID)
+    ? (heroCardBtn.innerText = "- Strike Squad")
+    : (heroCardBtn.innerText = "+ Strike Squad");
 });
