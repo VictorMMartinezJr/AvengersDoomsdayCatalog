@@ -14,7 +14,7 @@
     />
     <meta name="viewport" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" defer src="scripts.js"></script>
+    <script type="module" src="scripts.js"></script>
   </head>
 
   <body>
@@ -36,7 +36,7 @@
         </ul>
 
         <!-- Burger Menu -->
-        <button class="main-nav__burger">
+        <button class="main-nav__burger" aria-expanded="false">
           <div class="main-nav__burger__line1"></div>
           <div class="main-nav__burger__line2"></div>
           <div class="main-nav__burger__line3"></div>
@@ -48,7 +48,7 @@
                                         Hero
     =============================================================================-->
     <section id="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title" class="hero__title" aria-label="Release date: December 18th, 2026">
+      <h1 id="hero-title" class="section__title hero__title" aria-label="Release date: December 18th, 2026">
         Avengers: Doomsday
       </h1>
       <h2 class="hero__subtitle">12.18.26</h2>
@@ -61,7 +61,7 @@
     <section id="about" aria-labelledby="about-title">
       <!-- Text 1 -->
       <h2 id="about-title" class="about__title">A New Threat Rises</h1>
-      <p class="about__descriptions">
+      <p class="about__description">
         The Multiverse is fracturing, and the stakes have never been higher. As
         the dust settles on previous battles, a shadow looms over reality that
         makes even the Mad Titan's crusade look like a mere prelude.
@@ -69,7 +69,7 @@
 
       <!-- Text 2 -->
       <h3 class="about__subtitle">The Return of a Legend</h2>
-      <p class="about__descriptions">
+      <p class="about__description">
         The Earth's Mightiest Heroes must reunite once more, but the battlefield
         has changed, and the face of their greatest adversary is one they never
         expected. Robert Downey Jr. returns to the Marvel Cinematic Universe in
@@ -79,11 +79,33 @@
 
       <!-- Text 3 -->
       <h3 class="about__subtitle">Witness the Collision of Worlds</h2>
-      <p class="about__descriptions">
+      <p class="about__description">
         Directed by the Russo Brothers, Avengers: Doomsday marks the beginning
         of the end. The fight is a desperate race to preserve the fabric of
         existence itself against a foe whose intellect matches his ambition.
       </p>
+    </section>
+
+    <!-- ==========================================================================
+                                      Catalog
+    =============================================================================-->
+    <section id="catalog" aria-labelledby="catalog-title">
+      <h2 id="catalog-title" class="catalog__title">Hero Catalog</h2>
+      <p class="catalog__description">Explore the heroes of the Marvel Cinematic Universe.</p>
+      
+      <!-- Filter Dropdown-->
+      <label for="team-filter" class="sr-only">Filter heroes by team</label> <!-- added for screen readers only -->
+      <select id="team-filter" class="catalog__select">
+        <option value="all">ALL CLASSES</option>
+        <option value="X-Men">X-MEN</option>
+        <option value="F4">FANTASTIC FOUR</option>
+        <option value="OG Avengers">OG AVENGERS</option>
+        <option value="New Avengers">NEW AVENGERS</option>
+        <option value="Villains">VILLAINS</option>
+      </select>
+
+      <!-- Catalog Grid -->
+      <div class="catalog__grid" aria-live="polite" aria-atomic="true"></div>
     </section>
   </body>
 </html>
