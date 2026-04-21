@@ -93,15 +93,25 @@
       <h2 id="catalog-title" class="catalog__title">Hero Catalog</h2>
       <p class="catalog__description">Explore the heroes of the Marvel Cinematic Universe.</p>
       
-      <!-- Filter Dropdown-->
-      <label for="team-filter" class="sr-only">Filter heroes by team</label> <!-- added for screen readers only -->
-      <select id="team-filter" class="catalog__select">
-        <option value="all">ALL CLASSES</option>
-        <option value="X-Men">X-MEN</option>
-        <option value="F4">FANTASTIC FOUR</option>
-        <option value="OG Avengers">OG AVENGERS</option>
-        <option value="New Avengers">NEW AVENGERS</option>
-      </select>
+      <div class="catalog__filters">
+        <!-- Filter Dropdown-->
+        <label for="team-filter" class="sr-only">Filter heroes by team</label> <!-- added for screen readers only -->
+        <select id="team-filter" class="catalog__select">
+          <option value="all">ALL CLASSES</option>
+          <option value="X-Men">X-MEN</option>
+          <option value="F4">FANTASTIC FOUR</option>
+          <option value="OG Avengers">OG AVENGERS</option>
+          <option value="New Avengers">NEW AVENGERS</option>
+        </select>
+
+        <!-- Strike Squad Filter -->
+        <div class="catalog__ss__checkbox">
+          <input type="checkbox" id="squad-only" class="catalog__ss__checkbox__input">
+          <label for="squad-only" class="catalog__ss__checkboxlabel">
+            STRIKE SQUAD
+          </label>
+        </div>
+      </div>
 
       <!-- Catalog Grid -->
       <div class="catalog__grid" aria-live="polite" aria-atomic="true"></div>
