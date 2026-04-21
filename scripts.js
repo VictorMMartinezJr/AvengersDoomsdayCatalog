@@ -1,5 +1,21 @@
 import { heroes, strikeSquad } from "./data.js";
 
+// intersection observer for hero cards
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(
+    (entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("inView");
+      } else {
+        entry.target.classList.remove("inView");
+      }
+    },
+    {
+      threshold: 0.1,
+    },
+  );
+});
+
 /**
  * --------------------------------------------------------------------------
  *                            Query Selectors
@@ -15,6 +31,7 @@ const catalogSelect = document.querySelector(".catalog__select");
 const catalogStrikeSquadCB = document.querySelector(
   ".catalog__ss__checkbox__input",
 );
+const heroCards = document.querySelectorAll(".catalog__herocard");
 
 /**
  * --------------------------------------------------------------------------
@@ -71,6 +88,9 @@ const renderCatalog = (heroes) => {
   heroes.forEach((hero) => {
     catalogGrid.innerHTML += createHeroCardHTML(hero);
   });
+
+  const heroCards = document.querySelectorAll(".catalog__herocard");
+  heroCards.forEach((card) => observer.observe(card));
 };
 
 // initial render
