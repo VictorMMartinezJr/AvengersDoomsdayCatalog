@@ -49,6 +49,7 @@ const createHeroCardHTML = (hero) => {
     `;
 };
 
+// empty strike squad component
 const emptySSHTML = () => {
   return `
       <div class="catalog__empty">
@@ -122,6 +123,7 @@ catalogGrid.addEventListener("click", (e) => {
   if (e.target.classList.contains("catalog__empty__button")) {
     catalogStrikeSquadCB.checked = false;
     renderCatalog(heroes);
+    catalogSelect.value = "all";
     return;
   }
 
@@ -147,9 +149,19 @@ catalogGrid.addEventListener("click", (e) => {
     */
     if (catalogStrikeSquadCB.checked) {
       heroCard.remove();
-      // Re render to show empty ss message
-      if (strikeSquad.length === 0) {
-        renderCatalog(strikeSquad);
+
+      // the current team filter
+      const currentTeam = catalogSelect.value;
+
+      // get current team filter of ss if needed or else all
+      const visibleHeroes =
+        currentTeam === "all"
+          ? strikeSquad
+          : strikeSquad.filter((h) => h.team === currentTeam);
+
+      // rerender to show empty ss message
+      if (visibleHeroes.length === 0) {
+        renderCatalog(visibleHeroes);
       }
     }
   }
