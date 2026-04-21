@@ -5,11 +5,11 @@ import { heroes, strikeSquad } from "./data.js";
  *                            Query Selectors
  * --------------------------------------------------------------------------
  */
-// Navbar elements
+// navbar elements
 const menuBtn = document.querySelector(".main-nav__burger");
 const menuList = document.querySelector(".main-nav__links");
 
-// Catalog elements
+// catalog elements
 const catalogGrid = document.querySelector(".catalog__grid");
 const catalogSelect = document.querySelector(".catalog__select");
 const catalogStrikeSquadCB = document.querySelector(
@@ -22,12 +22,12 @@ const catalogStrikeSquadCB = document.querySelector(
  * --------------------------------------------------------------------------
  */
 
-// Check if hero exists in strike squad
+// check if hero exists in strike squad
 const existsInStrikeSquad = (heroId) => {
   return strikeSquad.some((hero) => hero.id === heroId);
 };
 
-// Hero card component
+// hero card component
 const createHeroCardHTML = (hero) => {
   const isInStrikeSquad = existsInStrikeSquad(hero.id);
 
@@ -58,7 +58,7 @@ const emptySSHTML = () => {
     `;
 };
 
-// Render/Update catalog with updated data
+// render/update catalog with updated data
 const renderCatalog = (heroes) => {
   catalogGrid.innerHTML = "";
 
@@ -72,7 +72,7 @@ const renderCatalog = (heroes) => {
   });
 };
 
-// Inital render
+// initial render
 renderCatalog(heroes);
 
 /**
@@ -81,7 +81,7 @@ renderCatalog(heroes);
  * --------------------------------------------------------------------------
  */
 
-// Navbar menu toggle
+// navbar menu toggle
 menuBtn.addEventListener("click", () => {
   const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
 
@@ -95,7 +95,7 @@ menuBtn.addEventListener("click", () => {
   menuBtn.classList.toggle("toggle");
 });
 
-// Catalog filter by team
+// catalog filter by team
 catalogSelect.addEventListener("change", (e) => {
   const selectedTeam = e.target.value;
   const strikeSquadOnly = catalogStrikeSquadCB.checked;
@@ -116,8 +116,15 @@ catalogSelect.addEventListener("change", (e) => {
   }
 });
 
-// Add/Remove hero from strike squad on card click
+// add/remove hero from strike squad on card click
 catalogGrid.addEventListener("click", (e) => {
+  // user trying to add hereos to empty squad strike
+  if (e.target.classList.contains("catalog__empty__button")) {
+    catalogStrikeSquadCB.checked = false;
+    renderCatalog(heroes);
+    return;
+  }
+
   const heroCard = e.target.closest(".catalog__herocard");
   const heroCardBtn = heroCard.querySelector(
     ".catalog__herocard__info__button",
@@ -135,11 +142,15 @@ catalogGrid.addEventListener("click", (e) => {
   } else {
     strikeSquad.splice(heroIndex, 1);
 
-    /* Remove the hero from the DOM immediately if user 
+    /* remove the hero from the DOM immediately if user 
       removes from ss while viewing ss only
     */
     if (catalogStrikeSquadCB.checked) {
       heroCard.remove();
+      // Re render to show empty ss message
+      if (strikeSquad.length === 0) {
+        renderCatalog(strikeSquad);
+      }
     }
   }
 
@@ -149,7 +160,7 @@ catalogGrid.addEventListener("click", (e) => {
     : (heroCardBtn.innerText = "+ Strike Squad");
 });
 
-// Filter by strike squad members only
+// filter by strike squad members only
 catalogStrikeSquadCB.addEventListener("change", (e) => {
   if (e.target.checked) {
     renderCatalog(strikeSquad);
