@@ -14,6 +14,20 @@
     />
     <meta name="viewport" />
     <link rel="stylesheet" href="style.css" />
+    <head>
+      <link
+        rel="preload"
+        href="assets/hero-desktop.jpg"
+        as="image"
+        media="(min-width: 768px)"
+      />
+      <link
+        rel="preload"
+        href="assets/hero-mobile.jpg"
+        as="image"
+        media="(max-width: 767px)"
+      />
+    </head>
     <script type="module" src="scripts.js"></script>
   </head>
 
@@ -47,7 +61,7 @@
     <!-- ==========================================================================
                                         Hero
     =============================================================================-->
-    <section id="hero" aria-labelledby="hero-title">
+    <main id="hero" aria-labelledby="hero-title">
       <h1
         id="hero-title"
         class="hero__title"
@@ -57,7 +71,7 @@
       </h1>
       <h2 class="hero__subtitle">12.18.26</h2>
       <a href="#catalog" class="main__btn hero__btn">Hero Catalog</a>
-    </section>
+    </main>
 
     <!-- ==========================================================================
                                         About
