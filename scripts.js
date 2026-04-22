@@ -48,7 +48,6 @@ const catalogSelect = document.querySelector(".catalog__select");
 const catalogStrikeSquadCB = document.querySelector(
   ".catalog__ss__checkbox__input",
 );
-const heroCards = document.querySelectorAll(".catalog__herocard");
 
 /**
  * --------------------------------------------------------------------------
@@ -131,6 +130,15 @@ menuBtn.addEventListener("click", () => {
 
   // animate burger menu btn
   menuBtn.classList.toggle("toggle");
+});
+
+// close nav when a link is clicked
+menuList.addEventListener("click", (e) => {
+  if (e.target.tagName === "A") {
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuList.classList.remove("main-nav__links--open");
+    menuBtn.classList.remove("toggle");
+  }
 });
 
 // catalog filter by team
